@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://by0me44dkrhht"]
+
+[ext_resource type="Script" uid="uid://kffqeedgjcse" path="res://scenes/ui/new_inventory_panel.gd" id="1_sa8pp"]
+[ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="2_ic3ky"]
+[ext_resource type="Script" uid="uid://cjw2ep6mabrs7" path="res://scenes/ui/item_grid.gd" id="3_00h1f"]
+[ext_resource type="PackedScene" uid="uid://cia7q4j6x8o2v" path="res://scenes/ui/inventory_slot.tscn" id="4_htx05"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_sa8pp")
+
+[node name="InventoryPanel" type="Panel" parent="."]
+modulate = Color(0.9254902, 0.9254902, 0.9254902, 1)
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_ic3ky")
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="GridContainer" type="GridContainer" parent="InventoryPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ic3ky")
+theme_type_variation = &"InventoryItemPanel"
+columns = 5
+script = ExtResource("3_00h1f")
+slot_scene = ExtResource("4_htx05")

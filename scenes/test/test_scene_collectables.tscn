@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://d3gi11dejs82a"]
+[gd_scene load_steps=10 format=4 uid="uid://d3gi11dejs82a"]
 
 [ext_resource type="TileSet" uid="uid://coeydybwkd8wc" path="res://tilesets/game_til_set.tres" id="1_q8h5q"]
 [ext_resource type="PackedScene" uid="uid://cmhtx2jwgohj5" path="res://scenes/characters/player/player.tscn" id="2_v75tu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://peh478di3il2" path="res://scenes/objects/milk.tscn" id="6_0jjdr"]
 [ext_resource type="PackedScene" uid="uid://w1npr6h1jdjo" path="res://scenes/objects/plants/corn_harvest.tscn" id="7_pkvns"]
 [ext_resource type="PackedScene" uid="uid://bgv75nhd4k8rs" path="res://scenes/objects/plants/tomato_harvest.tscn" id="8_33f7h"]
+[ext_resource type="PackedScene" uid="uid://bydwja0sva6h4" path="res://scenes/ui/game_screen.tscn" id="9_33f7h"]
 
 [node name="TestSceneCollectables" type="Node2D"]
 y_sort_enabled = true
@@ -44,3 +45,8 @@ position = Vector2(345, 215)
 
 [node name="TomatoHarvest" parent="." instance=ExtResource("8_33f7h")]
 position = Vector2(394, 207)
+
+[node name="GameScreen" parent="." instance=ExtResource("9_33f7h")]
+
+[node name="Egg2" parent="." instance=ExtResource("3_bna32")]
+position = Vector2(289, 133)

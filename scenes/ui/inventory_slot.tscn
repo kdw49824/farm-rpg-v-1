@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cia7q4j6x8o2v"]
+
+[ext_resource type="Script" uid="uid://h1karvk2eei1" path="res://scenes/ui/inventory_slot.gd" id="1_kscix"]
+[ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="1_ru537"]
+
+[node name="InventorySlot" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 3
+script = ExtResource("1_kscix")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme = ExtResource("1_ru537")
+theme_type_variation = &"InventoryItemPanel"
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8465322, 0.2866947, 0.3283305, 1)
