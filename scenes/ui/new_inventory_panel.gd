@@ -1,59 +1,57 @@
-extends CanvasLayer  # Attach to InventoryUI node
+extends CanvasLayer
 
 @onready var inventory_panel: Panel = $InventoryPanel
-@onready var grid: GridContainer = $InventoryPanel/GridContainer
+@onready var grid: GridContainer = $InventoryPanel/MarginContainer/GridContainer
 
-# Map item names to icons (optional, for Button icons)
-var item_icons: Dictionary = {
+# Preload the slot scene
+@onready var slot_scene = preload("res://scenes/ui/inventory_slot.tscn")
+
+# Map item names to icons
+var item_icons := {
 	"corn": preload("res://scenes/ui/icons/corn_icon.tres"),
-	"tomato": preload("res://scenes/ui/icons/tomato_icon.tres")
+	"tomato": preload("res://scenes/ui/icons/tomato_icon.tres"),
+	"egg": preload("res://scenes/ui/icons/egg_icon.tres"),
+	"stone": preload("res://scenes/ui/icons/stone_icon.tres"),
+	"log": preload("res://scenes/ui/icons/log_icon.tres"),
+	"milk": preload("res://scenes/ui/icons/milk_icon.tres")
 }
 
-func _ready() -> void:
+const TOTAL_SLOTS := 20
+
+func _ready():
+	# Configure grid appearance
+	grid.columns = 5  # Adjust number of columns as desired
+	grid.add_theme_constant_override("h_separation", 8)
+	grid.add_theme_constant_override("v_separation", 8)
+	
+	# Connect to inventory system
 	InventoryManager.inventory_changed.connect(refresh_inventory_ui)
 	refresh_inventory_ui()
-	inventory_panel.visible = true
+	inventory_panel.visible = false
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event):
 	if event.is_action_pressed("inventory_toggle"):
-		inventory_panel.visible = not inventory_panel.visible
+		inventory_panel.visible = !inventory_panel.visible
 
-func refresh_inventory_ui() -> void:
-	# Clear existing slots
+func refresh_inventory_ui():
+	# Clear previous slots
 	for child in grid.get_children():
 		child.queue_free()
-
-	var totals: Dictionary = InventoryManager.get_inventory_totals()
-
-	for item_name in totals.keys():
-		var count = totals[item_name]
-
-		# Create a Button slot
-		var slot_button = Button.new()
-		slot_button.name = item_name
-		slot_button.custom_minimum_size = Vector2(64, 64)
-		slot_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		slot_button.size_flags_vertical = Control.SIZE_EXPAND_FILL
-
-		# Apply solid color background using StyleBoxFlat
-		var style = StyleBoxFlat.new()
-		style.bg_color = Color(0.2, 0.2, 0.2)  # dark gray
-		slot_button.add_theme_stylebox_override("normal", style)
-		slot_button.add_theme_stylebox_override("hover", style)
-		slot_button.add_theme_stylebox_override("pressed", style)
-
-		# Optional: set an icon if available
-		if item_icons.has(item_name):
-			slot_button.icon = item_icons[item_name]
-
-		# Add a Label for item count
-		var label = Label.new()
-		label.text = str(count)
-		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
-		label.size_flags_horizontal = Control.SIZE_FILL
-		label.size_flags_vertical = Control.SIZE_FILL
-		slot_button.add_child(label)
-
-		# Add the slot to the grid
-		grid.add_child(slot_button)
+	
+	var totals = InventoryManager.get_inventory_totals()
+	var item_list = totals.keys()
+	
+	# Create exactly 20 slots
+	for i in range(TOTAL_SLOTS):
+		var slot = slot_scene.instantiate()
+		grid.add_child(slot)
+		
+		if i < item_list.size():
+			# Assign item to this slot
+			var item_name = item_list[i]
+			var amount = totals[item_name]
+			var icon_texture: Texture2D = item_icons.get(item_name, null)
+			slot.set_item(item_name, amount, icon_texture)
+		else:
+			# Empty slot
+			slot.set_item("", 0, null)

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bo6yi3odukk0b"]
+
+[ext_resource type="Texture2D" uid="uid://svtbqaqqoaq1" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_bovc0"]
+
+[resource]
+atlas = ExtResource("1_bovc0")
+region = Rect2(80, 32, 16, 16)

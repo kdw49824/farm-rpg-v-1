@@ -50,3 +50,9 @@ position = Vector2(394, 207)
 
 [node name="Egg2" parent="." instance=ExtResource("3_bna32")]
 position = Vector2(289, 133)
+
+[node name="CornHarvest2" parent="." instance=ExtResource("7_pkvns")]
+position = Vector2(158, 204)
+
+[node name="CornHarvest3" parent="." instance=ExtResource("7_pkvns")]
+position = Vector2(163, 139)
