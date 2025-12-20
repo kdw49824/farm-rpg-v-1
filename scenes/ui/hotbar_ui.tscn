@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmh31xigdig7x"]
+
+[ext_resource type="Script" uid="uid://c6fdga3lrc325" path="res://hotbar_ui.gd" id="1_urpc0"]
+[ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="2_5vphg"]
+
+[sub_resource type="Theme" id="Theme_urpc0"]
+
+[node name="HotbarUI" type="CanvasLayer"]
+script = ExtResource("1_urpc0")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 110.0
+offset_top = 289.0
+offset_right = 538.0
+offset_bottom = 336.0
+size_flags_horizontal = 3
+mouse_filter = 2
+theme = ExtResource("2_5vphg")
+theme_type_variation = &"DarkWoodPanel"
+
+[node name="HotbarContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_urpc0")
+theme_type_variation = &"DarkWoodPanel"
+theme_override_constants/separation = 2

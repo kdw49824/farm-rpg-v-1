@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba0ll761xhpfj"]
+
+[ext_resource type="Texture2D" uid="uid://bmunj4nxywmqj" path="res://assets/game/objects/basic_tools_and_meterials.png" id="1_kmf2t"]
+[ext_resource type="PackedScene" uid="uid://cl2nv2w0x7bi6" path="res://scenes/components/collectable_component.tscn" id="2_5qgfe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
+radius = 7.071068
+
+[node name="WoodAxe" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_kmf2t")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_5qgfe")]
+collectable_name = "axewood"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_h452w")

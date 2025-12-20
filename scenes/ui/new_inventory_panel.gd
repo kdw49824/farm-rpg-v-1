@@ -13,7 +13,8 @@ var item_icons := {
 	"egg": preload("res://scenes/ui/icons/egg_icon.tres"),
 	"stone": preload("res://scenes/ui/icons/stone_icon.tres"),
 	"log": preload("res://scenes/ui/icons/log_icon.tres"),
-	"milk": preload("res://scenes/ui/icons/milk_icon.tres")
+	"milk": preload("res://scenes/ui/icons/milk_icon.tres"),
+	"axewood": preload("res://scenes/ui/icons/axewood_icon.tres")
 }
 
 const TOTAL_SLOTS := 20

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d3gi11dejs82a"]
+[gd_scene load_steps=14 format=4 uid="uid://d3gi11dejs82a"]
 
 [ext_resource type="TileSet" uid="uid://coeydybwkd8wc" path="res://tilesets/game_til_set.tres" id="1_q8h5q"]
 [ext_resource type="PackedScene" uid="uid://cmhtx2jwgohj5" path="res://scenes/characters/player/player.tscn" id="2_v75tu"]
@@ -9,6 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://w1npr6h1jdjo" path="res://scenes/objects/plants/corn_harvest.tscn" id="7_pkvns"]
 [ext_resource type="PackedScene" uid="uid://bgv75nhd4k8rs" path="res://scenes/objects/plants/tomato_harvest.tscn" id="8_33f7h"]
 [ext_resource type="PackedScene" uid="uid://bydwja0sva6h4" path="res://scenes/ui/game_screen.tscn" id="9_33f7h"]
+[ext_resource type="PackedScene" uid="uid://ba0ll761xhpfj" path="res://scenes/objects/axewood.tscn" id="10_o23xm"]
+[ext_resource type="PackedScene" uid="uid://dnt20xslv8ur3" path="res://scenes/objects/trees/small_tree.tscn" id="11_aj4o7"]
+[ext_resource type="Shader" uid="uid://chy8441w8d8vf" path="res://scenes/objects/shake.gdshader" id="12_udfa6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ry1c"]
+resource_local_to_scene = true
+shader = ExtResource("12_udfa6")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [node name="TestSceneCollectables" type="Node2D"]
 y_sort_enabled = true
@@ -56,3 +65,10 @@ position = Vector2(158, 204)
 
 [node name="CornHarvest3" parent="." instance=ExtResource("7_pkvns")]
 position = Vector2(163, 139)
+
+[node name="WoodAxe" parent="." instance=ExtResource("10_o23xm")]
+position = Vector2(111, 197)
+
+[node name="SmallTree" parent="." instance=ExtResource("11_aj4o7")]
+material = SubResource("ShaderMaterial_4ry1c")
+position = Vector2(110, 99)
