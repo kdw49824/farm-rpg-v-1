@@ -14,9 +14,10 @@ var item_icons := {
 	"log": preload("res://scenes/ui/icons/log_icon.tres"),
 	"milk": preload("res://scenes/ui/icons/milk_icon.tres"),
 	"axewood": preload("res://scenes/ui/icons/axewood_icon.tres"),
+	"watercrops": preload("res://scenes/ui/icons/watercrops_icon.tres"),
+	"tillground": preload("res://scenes/ui/icons/tillground_icon.tres"),
 	# Add more tool icons here as needed:
 	# "hoe": preload("res://scenes/ui/icons/hoe_icon.tres"),
-	# "wateringcan": preload("res://scenes/ui/icons/wateringcan_icon.tres"),
 	# "cornseed": preload("res://scenes/ui/icons/cornseed_icon.tres"),
 	# "tomatoseed": preload("res://scenes/ui/icons/tomatoseed_icon.tres"),
 }

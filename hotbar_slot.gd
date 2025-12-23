@@ -14,9 +14,11 @@ var is_selected: bool = false  # Track if this slot is selected (different from 
 const ITEM_TO_TOOL := {
 	"axewood": DataTypes.Tools.AxeWood,
 	"hoe": DataTypes.Tools.TillGround,
-	"wateringcan": DataTypes.Tools.WaterCrops,
+	"watercrops": DataTypes.Tools.WaterCrops,
 	"cornseed": DataTypes.Tools.PlantCorn,
 	"tomatoseed": DataTypes.Tools.PlantTomato,
+	"tillground": DataTypes.Tools.TillGround,
+
 	# Common variations
 	"axe": DataTypes.Tools.AxeWood,
 	"watering_can": DataTypes.Tools.WaterCrops,
