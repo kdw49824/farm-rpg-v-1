@@ -1,12 +1,10 @@
 extends Node2D
 
 var balloon_scene = preload("res://dialogue/game_dialogue_balloon.tscn")
-
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var interactable_label_component: Control = $InteractableLabelComponent
 
 var in_range: bool
-
 
 func _ready() -> void:
 	interactable_component.interactable_activated.connect(on_interactable_activated)
@@ -15,16 +13,13 @@ func _ready() -> void:
 	
 	GameDialogueManager.give_crop_seeds.connect(on_give_crop_seeds)
 
-
 func on_interactable_activated() -> void:
 	interactable_label_component.show()
 	in_range = true
 
-
 func on_interactable_deactivated() -> void:
 	interactable_label_component.hide()
 	in_range = false
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if in_range:
@@ -33,9 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().root.add_child(balloon)
 			balloon.start(load("res://dialogue/conversations/guide.dialogue"), "start")
 
-
 func on_give_crop_seeds() -> void:
-	ToolManager.enable_tool_button(DataTypes.Tools.TillGround)
-	ToolManager.enable_tool_button(DataTypes.Tools.WaterCrops)
-	ToolManager.enable_tool_button(DataTypes.Tools.PlantCorn)
-	ToolManager.enable_tool_button(DataTypes.Tools.PlantTomato)
+	# Add axewood to inventory instead of enabling seed tools
+	InventoryManager.add_collectable("axewood", 1)
+	InventoryManager.add_collectable("watercrops", 1)
+	InventoryManager.add_collectable("planttomato", 1)
