@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c6uxw1ox4qscm"]
+[gd_scene load_steps=21 format=4 uid="uid://c6uxw1ox4qscm"]
 
 [ext_resource type="TileSet" uid="uid://coeydybwkd8wc" path="res://tilesets/game_til_set.tres" id="1_70iii"]
 [ext_resource type="PackedScene" uid="uid://cervpcs3pdbf7" path="res://scenes/objects/watercrops.tscn" id="2_03qej"]
@@ -16,8 +16,21 @@
 [ext_resource type="PackedScene" uid="uid://c3hew2aaaebw8" path="res://scenes/objects/plants/corn.tscn" id="14_u5227"]
 [ext_resource type="PackedScene" uid="uid://dhyf8eugqev73" path="res://scenes/objects/plants/tomato.tscn" id="15_d8b5x"]
 [ext_resource type="PackedScene" uid="uid://u3hnhni1gbx" path="res://scenes/objects/tillground.tscn" id="16_d8b5x"]
+[ext_resource type="PackedScene" uid="uid://df60n4m4m1nv8" path="res://scenes/objects/trees/large_tree.tscn" id="17_hd21u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ry1c"]
+resource_local_to_scene = true
+shader = ExtResource("13_ikjpy")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqegf"]
+resource_local_to_scene = true
+shader = ExtResource("13_ikjpy")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxsta"]
 resource_local_to_scene = true
 shader = ExtResource("13_ikjpy")
 shader_parameter/shake_intensity = 0.0
@@ -88,3 +101,11 @@ position = Vector2(180, 62)
 
 [node name="TillGround" parent="." instance=ExtResource("16_d8b5x")]
 position = Vector2(137, 169)
+
+[node name="LargeTree" parent="." instance=ExtResource("17_hd21u")]
+material = SubResource("ShaderMaterial_lqegf")
+position = Vector2(145, 75)
+
+[node name="SmallTree2" parent="." instance=ExtResource("12_fvqlk")]
+material = SubResource("ShaderMaterial_vxsta")
+position = Vector2(137, 122)

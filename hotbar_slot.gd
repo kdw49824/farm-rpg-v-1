@@ -18,7 +18,6 @@ const ITEM_TO_TOOL := {
 	"cornseed": DataTypes.Tools.PlantCorn,
 	"tomatoseed": DataTypes.Tools.PlantTomato,
 	"tillground": DataTypes.Tools.TillGround,
-
 	# Common variations
 	"axe": DataTypes.Tools.AxeWood,
 	"watering_can": DataTypes.Tools.WaterCrops,
@@ -63,12 +62,12 @@ func set_slot_data(slot_idx: int, name: String, count: int, texture: Texture2D) 
 func _on_pressed() -> void:
 	# If this slot has a tool, equip it
 	if associated_tool != DataTypes.Tools.None:
-		ToolManager.select_tool(associated_tool)
+		ToolManager.select_tool(associated_tool, slot_index)
 	else:
 		# If it's not a tool, unequip the current tool
-		ToolManager.select_tool(DataTypes.Tools.None)
+		ToolManager.select_tool(DataTypes.Tools.None, -1)
 
-func _on_tool_selected(tool: DataTypes.Tools) -> void:
+func _on_tool_selected(tool: DataTypes.Tools, slot_index_param: int) -> void:
 	update_selection_indicator()
 
 func set_selected(selected: bool) -> void:
