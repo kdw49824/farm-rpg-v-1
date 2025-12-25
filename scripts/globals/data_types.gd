@@ -89,7 +89,7 @@ const ITEM_DATABASE := {
 		"icon_path": "res://scenes/ui/icons/axewood_icon.tres",
 		"rarity": ItemRarity.COMMON,
 		"has_durability": true,
-		"max_durability": 5,
+		"max_durability": 8,
 		"description": "A basic wooden axe for chopping trees."
 	},
 	"axestone": {
