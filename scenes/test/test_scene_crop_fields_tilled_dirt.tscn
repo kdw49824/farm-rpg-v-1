@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://d1mk26lpwb56i"]
+[gd_scene load_steps=15 format=4 uid="uid://d1mk26lpwb56i"]
 
 [ext_resource type="PackedScene" uid="uid://byy5wpygsf3kh" path="res://scenes/components/day_night_cycle_component.tscn" id="1_mapoa"]
 [ext_resource type="PackedScene" uid="uid://162sta4ml13e" path="res://scenes/components/test_scene_enable_tool_buttons_component.tscn" id="1_t4lsr"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://babapfmosrb36" path="res://scenes/components/save_level_data_component.tscn" id="8_bb1mf"]
 [ext_resource type="Resource" uid="uid://bh00unif6yyvh" path="res://resources/tilemap_layer_data_resource.tres" id="8_t4lsr"]
 [ext_resource type="PackedScene" uid="uid://c2wfujrhgw1mu" path="res://scenes/components/crops_cursor_component.tscn" id="12_t4lsr"]
+[ext_resource type="PackedScene" uid="uid://u3hnhni1gbx" path="res://scenes/objects/tillground.tscn" id="14_t4lsr"]
 
 [node name="TestSceneCropsTilledDirt" type="Node2D"]
 
@@ -58,3 +59,6 @@ tilled_soil_tilemap_layer = NodePath("../GameTileMap/TilledSoil")
 position = Vector2(254, 171)
 
 [node name="GameScreen" parent="." instance=ExtResource("4_bb1mf")]
+
+[node name="HoeStone" parent="." instance=ExtResource("14_t4lsr")]
+position = Vector2(126, 204)

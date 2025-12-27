@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="1_e2vrk"]
 [ext_resource type="PackedScene" uid="uid://horqtleyrn0x" path="res://scenes/ui/day_and_night_panel.tscn" id="4_gkbp4"]
-[ext_resource type="PackedScene" uid="uid://by0me44dkrhht" path="res://scenes/ui/new_inventory_panel.tscn" id="5_0kkfd"]
+[ext_resource type="PackedScene" uid="uid://by0me44dkrhht" path="res://scenes/ui/Inventory_panel.tscn" id="5_0kkfd"]
 [ext_resource type="PackedScene" uid="uid://bmh31xigdig7x" path="res://scenes/ui/hotbar_ui.tscn" id="6_nwa5a"]
 
 [node name="GameScreen" type="CanvasLayer"]

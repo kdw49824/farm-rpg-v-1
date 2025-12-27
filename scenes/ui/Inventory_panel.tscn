@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://by0me44dkrhht"]
 
-[ext_resource type="Script" uid="uid://kffqeedgjcse" path="res://scenes/ui/new_inventory_panel.gd" id="1_sa8pp"]
-[ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="2_ic3ky"]
-[ext_resource type="Script" uid="uid://cjw2ep6mabrs7" path="res://scenes/ui/item_grid.gd" id="3_00h1f"]
-[ext_resource type="PackedScene" uid="uid://cia7q4j6x8o2v" path="res://scenes/ui/inventory_slot.tscn" id="4_htx05"]
+[ext_resource type="Script" uid="uid://kffqeedgjcse" path="res://scenes/ui/inventory_panel.gd" id="1_p5cr0"]
+[ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="2_qwyw8"]
+[ext_resource type="Script" uid="uid://cjw2ep6mabrs7" path="res://scenes/ui/item_grid.gd" id="3_pvu8x"]
+[ext_resource type="PackedScene" uid="uid://cia7q4j6x8o2v" path="res://scenes/ui/inventory_slot.tscn" id="4_jxy3a"]
 
 [node name="InventoryUI" type="CanvasLayer"]
-script = ExtResource("1_sa8pp")
+script = ExtResource("1_p5cr0")
 
 [node name="InventoryPanel" type="Panel" parent="."]
 modulate = Color(0.9254902, 0.9254902, 0.9254902, 1)
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("2_ic3ky")
+theme = ExtResource("2_qwyw8")
 theme_type_variation = &"DarkWoodPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryPanel"]
@@ -41,5 +41,5 @@ theme_type_variation = &"InventoryItemPanel"
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 4
-script = ExtResource("3_00h1f")
-slot_scene = ExtResource("4_htx05")
+script = ExtResource("3_pvu8x")
+slot_scene = ExtResource("4_jxy3a")
