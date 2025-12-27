@@ -38,8 +38,8 @@ grow_vertical = 2
 [node name="GridContainer" type="GridContainer" parent="InventoryPanel/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
-theme_override_constants/h_separation = 2
+theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 2
-columns = 4
+columns = 5
 script = ExtResource("3_pvu8x")
 slot_scene = ExtResource("4_jxy3a")

@@ -6,17 +6,10 @@ extends CanvasLayer
 # Preload the slot scene
 @onready var slot_scene = preload("res://scenes/ui/inventory_slot.tscn")
 
-# ❌ REMOVED: Manual icon mapping - now uses DataTypes.get_icon()
-
 const TOTAL_SLOTS := 20
 
 
 func _ready():
-	# Configure grid appearance
-	grid.columns = 5  # Adjust number of columns as desired
-	grid.add_theme_constant_override("h_separation", 8)
-	grid.add_theme_constant_override("v_separation", 8)
-	
 	# Connect to inventory system
 	InventoryManager.inventory_changed.connect(refresh_inventory_ui)
 	refresh_inventory_ui()
