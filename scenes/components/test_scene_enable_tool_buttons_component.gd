@@ -5,7 +5,7 @@ func _ready() -> void:
 
 
 func enable_tool_buttons() -> void:
-	ToolManager.enable_tool_button(DataTypes.Tools.TillGround)
-	ToolManager.enable_tool_button(DataTypes.Tools.WaterCrops)
+	ToolManager.enable_tool_button(DataTypes.Tools.HoeStone)
+	ToolManager.enable_tool_button(DataTypes.Tools.WateringCan)
 	ToolManager.enable_tool_button(DataTypes.Tools.PlantCorn)
 	ToolManager.enable_tool_button(DataTypes.Tools.PlantTomato)

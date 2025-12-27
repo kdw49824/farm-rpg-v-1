@@ -6,18 +6,10 @@ extends CanvasLayer
 # Preload the slot scene
 @onready var slot_scene = preload("res://scenes/ui/inventory_slot.tscn")
 
-# Map item names to icons
-var item_icons := {
-	"corn": preload("res://scenes/ui/icons/corn_icon.tres"),
-	"tomato": preload("res://scenes/ui/icons/tomato_icon.tres"),
-	"egg": preload("res://scenes/ui/icons/egg_icon.tres"),
-	"stone": preload("res://scenes/ui/icons/stone_icon.tres"),
-	"log": preload("res://scenes/ui/icons/log_icon.tres"),
-	"milk": preload("res://scenes/ui/icons/milk_icon.tres"),
-	"axewood": preload("res://scenes/ui/icons/axewood_icon.tres")
-}
+# ❌ REMOVED: Manual icon mapping - now uses DataTypes.get_icon()
 
 const TOTAL_SLOTS := 20
+
 
 func _ready():
 	# Configure grid appearance
@@ -30,9 +22,11 @@ func _ready():
 	refresh_inventory_ui()
 	inventory_panel.visible = false
 
+
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory_toggle"):
 		inventory_panel.visible = !inventory_panel.visible
+
 
 func refresh_inventory_ui():
 	# Clear previous slots
@@ -51,7 +45,10 @@ func refresh_inventory_ui():
 			# Assign item to this slot
 			var item_name = item_list[i]
 			var amount = totals[item_name]
-			var icon_texture: Texture2D = item_icons.get(item_name, null)
+			
+			# ✨ Use DataTypes to get icon automatically
+			var icon_texture: Texture2D = DataTypes.get_icon(item_name)
+			
 			slot.set_item(item_name, amount, icon_texture)
 		else:
 			# Empty slot

@@ -6,14 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
 radius = 7.071068
 
-[node name="TillGround" type="Sprite2D"]
+[node name="HoeStone" type="Sprite2D"]
 y_sort_enabled = true
 texture = ExtResource("1_3ot53")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 
 [node name="CollectableComponent" parent="." instance=ExtResource("2_cu7wb")]
-collectable_name = "tillground"
+collectable_name = "HoeStone"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
 shape = SubResource("CircleShape2D_h452w")

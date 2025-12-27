@@ -98,7 +98,7 @@ position = Vector2(164, 92)
 [node name="Tomato" parent="." instance=ExtResource("15_d8b5x")]
 position = Vector2(180, 62)
 
-[node name="TillGround" parent="." instance=ExtResource("16_d8b5x")]
+[node name="HoeStone" parent="." instance=ExtResource("16_d8b5x")]
 position = Vector2(137, 169)
 
 [node name="LargeTree" parent="." instance=ExtResource("17_hd21u")]

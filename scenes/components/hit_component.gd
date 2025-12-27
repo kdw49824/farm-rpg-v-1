@@ -25,9 +25,9 @@ func try_hit() -> void:
 	match current_tool:
 		DataTypes.Tools.AxeWood, DataTypes.Tools.AxeStone, DataTypes.Tools.AxeIron:
 			_axe_hit()
-		DataTypes.Tools.TillGround:
+		DataTypes.Tools.HoeStone:
 			_till_hit()
-		DataTypes.Tools.WaterCrops:
+		DataTypes.Tools.WateringCan:
 			_water_hit()
 		DataTypes.Tools.PlantCorn:
 			_plant_hit("corn")

@@ -9,8 +9,8 @@ enum Tools {
 	AxeWood,
 	AxeStone,
 	AxeIron,
-	TillGround,
-	WaterCrops,
+	HoeStone,
+	WateringCan,
 	PlantCorn,
 	PlantTomato,
 	Pickaxe,
@@ -114,10 +114,10 @@ const ITEM_DATABASE := {
 		"max_durability": 400,
 		"description": "A high-quality iron axe. Very durable."
 	},
-	"hoe": {
+	"hoestone": {
 		"display_name": "Hoe",
 		"category": ItemCategory.TOOL,
-		"tool_type": Tools.TillGround,
+		"tool_type": Tools.HoeStone,
 		"max_stack": 1,
 		"icon_path": "res://scenes/ui/icons/hoe_icon.tres",
 		"rarity": ItemRarity.COMMON,
@@ -128,7 +128,7 @@ const ITEM_DATABASE := {
 	"wateringcan": {
 		"display_name": "Watering Can",
 		"category": ItemCategory.TOOL,
-		"tool_type": Tools.WaterCrops,
+		"tool_type": Tools.WateringCan,
 		"max_stack": 1,
 		"icon_path": "res://scenes/ui/icons/wateringcan_icon.tres",
 		"rarity": ItemRarity.COMMON,
@@ -653,6 +653,84 @@ static func get_grow_time(item_name: String) -> float:
 	"""Get crop grow time for seeds."""
 	var data = get_item_data(item_name)
 	return data.get("grow_time", 5.0)
+
+# ============================================
+# ICON LOADING - INTEGRATED
+# ============================================
+
+# Icon cache - static dictionary persists across calls
+static var _icon_cache: Dictionary = {}
+static var _fallback_icon: Texture2D = null
+
+static func get_icon(item_name: String) -> Texture2D:
+	"""Get the icon texture for an item. Returns cached version if available."""
+	# Check cache first
+	if _icon_cache.has(item_name):
+		return _icon_cache[item_name]
+	
+	# Get icon path from database
+	var icon_path := get_icon_path(item_name)
+	
+	# Return fallback if no path
+	if icon_path.is_empty():
+		return _get_fallback_icon()
+	
+	# Try to load the icon
+	var icon := _load_icon_from_path(icon_path)
+	
+	# Cache it (even if null, to avoid repeated failed loads)
+	_icon_cache[item_name] = icon if icon != null else _get_fallback_icon()
+	
+	return _icon_cache[item_name]
+
+
+static func _load_icon_from_path(path: String) -> Texture2D:
+	"""Load an icon from a file path."""
+	if not ResourceLoader.exists(path):
+		push_warning("DataTypes: Icon not found at path: %s" % path)
+		return null
+	
+	var resource = load(path)
+	
+	if resource is Texture2D or resource is AtlasTexture:
+		return resource
+	
+	push_warning("DataTypes: Resource at %s is not a Texture2D" % path)
+	return null
+
+
+static func _get_fallback_icon() -> Texture2D:
+	"""Get or create a fallback icon for missing items."""
+	if _fallback_icon != null:
+		return _fallback_icon
+	
+	# Try to load a fallback icon if it exists
+	var fallback_path := "res://scenes/ui/icons/unknown_icon.tres"
+	if ResourceLoader.exists(fallback_path):
+		_fallback_icon = load(fallback_path)
+		return _fallback_icon
+	
+	# Create a simple placeholder
+	var image := Image.create(32, 32, false, Image.FORMAT_RGBA8)
+	image.fill(Color(0.3, 0.3, 0.3, 1.0))
+	_fallback_icon = ImageTexture.create_from_image(image)
+	
+	return _fallback_icon
+
+
+static func preload_all_icons() -> void:
+	"""Preload all icons at once (optional, for loading screens)."""
+	var all_items := get_all_items()
+	for item_name in all_items:
+		get_icon(item_name)
+	print("DataTypes: Preloaded %d icons" % _icon_cache.size())
+
+
+static func clear_icon_cache() -> void:
+	"""Clear the icon cache (useful for development/hot-reloading)."""
+	_icon_cache.clear()
+	_fallback_icon = null
+
 
 # ============================================
 # CATEGORY CHECKS

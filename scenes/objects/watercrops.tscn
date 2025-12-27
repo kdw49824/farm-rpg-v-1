@@ -6,14 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_h452w"]
 radius = 7.071068
 
-[node name="WaterCrops" type="Sprite2D"]
+[node name="WateringCan" type="Sprite2D"]
 y_sort_enabled = true
 texture = ExtResource("1_uwrsr")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollectableComponent" parent="." instance=ExtResource("2_amh2i")]
-collectable_name = "watercrops"
+collectable_name = "wateringcan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
 shape = SubResource("CircleShape2D_h452w")

@@ -10,20 +10,6 @@ var slot_index: int = 0
 var associated_tool: DataTypes.Tools = DataTypes.Tools.None
 var is_selected: bool = false  # Track if this slot is selected (different from tool being equipped)
 
-# Map item names to their corresponding tools
-const ITEM_TO_TOOL := {
-	"axewood": DataTypes.Tools.AxeWood,
-	"hoe": DataTypes.Tools.TillGround,
-	"watercrops": DataTypes.Tools.WaterCrops,
-	"cornseed": DataTypes.Tools.PlantCorn,
-	"tomatoseed": DataTypes.Tools.PlantTomato,
-	"tillground": DataTypes.Tools.TillGround,
-	# Common variations
-	"axe": DataTypes.Tools.AxeWood,
-	"watering_can": DataTypes.Tools.WaterCrops,
-	"corn_seed": DataTypes.Tools.PlantCorn,
-	"tomato_seed": DataTypes.Tools.PlantTomato,
-}
 
 func _ready() -> void:
 	# Connect the button press signal
@@ -32,6 +18,7 @@ func _ready() -> void:
 	# Listen for tool selection changes to update visual indicator
 	if ToolManager:
 		ToolManager.tool_selected.connect(_on_tool_selected)
+
 
 func set_slot_data(slot_idx: int, name: String, count: int, texture: Texture2D) -> void:
 	slot_index = slot_idx
@@ -53,11 +40,12 @@ func set_slot_data(slot_idx: int, name: String, count: int, texture: Texture2D) 
 	else:
 		count_label.visible = false
 	
-	# Determine the associated tool (case-insensitive lookup)
-	associated_tool = ITEM_TO_TOOL.get(item_name.to_lower(), DataTypes.Tools.None)
+	# ✨ Use DataTypes to get the tool type directly from the database
+	associated_tool = DataTypes.get_tool_type(item_name)
 	
 	# Update selection indicator
 	update_selection_indicator()
+
 
 func _on_pressed() -> void:
 	# If this slot has a tool, equip it
@@ -67,12 +55,15 @@ func _on_pressed() -> void:
 		# If it's not a tool, unequip the current tool
 		ToolManager.select_tool(DataTypes.Tools.None, -1)
 
+
 func _on_tool_selected(tool: DataTypes.Tools, slot_index_param: int) -> void:
 	update_selection_indicator()
+
 
 func set_selected(selected: bool) -> void:
 	is_selected = selected
 	update_selection_indicator()
+
 
 func update_selection_indicator() -> void:
 	# Show indicator if this slot is selected OR if this slot's tool is equipped

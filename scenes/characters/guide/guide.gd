@@ -31,5 +31,5 @@ func _unhandled_input(event: InputEvent) -> void:
 func on_give_crop_seeds() -> void:
 	# Add axewood to inventory instead of enabling seed tools
 	InventoryManager.add_collectable("axewood", 1)
-	InventoryManager.add_collectable("watercrops", 1)
+	InventoryManager.add_collectable("wateringcan", 1)
 	InventoryManager.add_collectable("planttomato", 1)
