@@ -1,13 +1,11 @@
 extends Button
 
-@onready var icon_texture: TextureRect = $IconTexture
-@onready var count_label: Label = $CountLabel
+@onready var icon_texture: TextureRect = $IconMargin/IconTexture
+@onready var count_label: Label = $CountCorner/CountLabel
 
 var item_name: String = ""
 var count: int = 0
 
-func _ready():
-	pass
 
 func set_item(new_item_name: String, amount: int, texture: Texture2D):
 	item_name = new_item_name
