@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var inventory_panel: Panel = $InventoryPanel
-@onready var grid: GridContainer = $InventoryPanel/MarginContainer/GridContainer
+@onready var grid: GridContainer = $InventoryPanel/VBoxContainer/GridContainer
 
 # Preload the slot scene
 @onready var slot_scene = preload("res://scenes/ui/inventory_slot.tscn")

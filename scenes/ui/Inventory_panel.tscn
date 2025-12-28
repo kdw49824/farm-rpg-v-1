@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kffqeedgjcse" path="res://scenes/ui/inventory_panel.gd" id="1_p5cr0"]
 [ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="2_qwyw8"]
 [ext_resource type="Script" uid="uid://cjw2ep6mabrs7" path="res://scenes/ui/item_grid.gd" id="3_pvu8x"]
-[ext_resource type="PackedScene" uid="uid://cia7q4j6x8o2v" path="res://scenes/ui/inventory_slot.tscn" id="4_jxy3a"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory_slot.tscn" id="4_jxy3a"]
 
 [node name="InventoryUI" type="CanvasLayer"]
 script = ExtResource("1_p5cr0")
@@ -27,15 +27,18 @@ size_flags_vertical = 4
 theme = ExtResource("2_qwyw8")
 theme_type_variation = &"DarkWoodPanel"
 
-[node name="MarginContainer" type="MarginContainer" parent="InventoryPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 240.0
+offset_bottom = 190.0
 
-[node name="GridContainer" type="GridContainer" parent="InventoryPanel/MarginContainer"]
+[node name="Label" type="Label" parent="InventoryPanel/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="GridContainer" type="GridContainer" parent="InventoryPanel/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"InventoryItemPanel"
 theme_override_constants/h_separation = 8
