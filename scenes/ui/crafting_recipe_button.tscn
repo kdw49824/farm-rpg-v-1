@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://recipe_button"]
+
+[ext_resource type="Script" path="res://scenes/ui/crafting_recipe_button.gd" id="1_recipe_btn"]
+
+[node name="RecipeButton" type="Button"]
+custom_minimum_size = Vector2(0, 50)
+script = ExtResource("1_recipe_btn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Recipe Name"
+
+[node name="CanCraftIndicator" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+color = Color(0, 1, 0, 1)

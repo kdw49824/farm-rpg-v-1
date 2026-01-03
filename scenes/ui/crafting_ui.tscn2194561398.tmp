@@ -1,0 +1,132 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5mk5j3rfnv4b"]
+
+[ext_resource type="Script" uid="uid://c52whc1gydyy7" path="res://scenes/ui/crafting_ui.gd" id="1_craft_ui"]
+[ext_resource type="Theme" uid="uid://uncypjbcf8he" path="res://scenes/ui/game_ui_theme.tres" id="2_theme"]
+
+[node name="CraftingUI" type="CanvasLayer"]
+script = ExtResource("1_craft_ui")
+
+[node name="CraftingPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="MarginContainer" type="MarginContainer" parent="CraftingPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CraftingPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CRAFTING"
+horizontal_alignment = 1
+
+[node name="CategoryTabs" type="HBoxContainer" parent="CraftingPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftingPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecipeListScroll" type="ScrollContainer" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="RecipeList" type="VBoxContainer" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeListScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RecipeDetail" type="Panel" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultPanel" type="Panel" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer/ResultPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ResultIcon" type="TextureRect" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer/ResultPanel/MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ResultName" type="Label" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer/ResultPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -23.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Item description goes here."
+autowrap_mode = 3
+
+[node name="StationLabel" type="Label" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer"]
+layout_mode = 2
+text = "Requires: Workbench"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer"]
+layout_mode = 2
+text = "Required Materials:"
+
+[node name="IngredientsScroll" type="ScrollContainer" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="IngredientsList" type="VBoxContainer" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer/IngredientsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CraftButton" type="Button" parent="CraftingPanel/MarginContainer/VBoxContainer/HBoxContainer/RecipeDetail/VBoxContainer"]
+layout_mode = 2
+text = "CRAFT"
