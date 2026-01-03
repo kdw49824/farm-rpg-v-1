@@ -351,12 +351,12 @@ func craft_item(recipe_id: String, at_station: String = "") -> bool:
 	for ingredient in ingredients:
 		var item_name = ingredient.get("item", "")
 		var amount = ingredient.get("amount", 0)
-		InventoryManager.remove_item(item_name, amount)
+		InventoryManager.remove_collectable(item_name, amount)
 	
 	# Add result to inventory
 	var result_item = recipe.get("result", "")
 	var result_amount = recipe.get("amount", 1)
-	InventoryManager.add_item(result_item, result_amount)
+	InventoryManager.add_collectable(result_item, result_amount)
 	
 	# Emit success signal
 	recipe_crafted.emit(recipe_id, result_item, result_amount)
